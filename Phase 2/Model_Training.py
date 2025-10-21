@@ -88,7 +88,7 @@ if __name__ == '__main__':
     
     # Prepare settings to be recorded
     Settings = {'BP_optimizer': 'torch.optim.Adam(model.parameters(), lr=1e-4, betas=(0.9, 0.999), weight_decay=0)',
-                'trainer': 'Model_Trainer(model,torch.nn.MSELoss(), BP_optimizer, device, Settings, batch_size=32, num_epochs=75, save_states=True, save_final=True)'
+                'trainer': 'Model_Trainer(model,torch.nn.HuberLoss(), BP_optimizer, device, Settings, batch_size=32, num_epochs=75, save_states=True, save_final=True)'
                 }
     # Setup training device
     torch.cuda.empty_cache()
@@ -103,4 +103,5 @@ if __name__ == '__main__':
     model_trainer.Set_Dataset(Train_Data, {
                               'Test_CalBased': Test_CalBased_Data, 'Test_CalFree': Test_CalFree_Data})
     model_trainer.Train_Model()
+
     # Find the curves of error metrics in the TensorBoard folder
