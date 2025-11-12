@@ -259,7 +259,7 @@ def ppg_func_v2(ppg_norm, sampling_rate, print_opt=False):
 
         return np.array(features)
     
-    except (KeyError, IndexError, ValueError, TypeError, ZeroDivisionError) as e:
+    except Exception:
         # Return None if any error occurs during calculation
         return None
 
